@@ -9,19 +9,27 @@
 /* Begin PBXBuildFile section */
 		070B564529641422001379BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B564429641422001379BD /* AppDelegate.swift */; };
 		070B564729641422001379BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B564629641422001379BD /* SceneDelegate.swift */; };
-		070B564929641422001379BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B564829641422001379BD /* ViewController.swift */; };
+		070B564929641422001379BD /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B564829641422001379BD /* TabBarController.swift */; };
 		070B564E29641423001379BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 070B564D29641423001379BD /* Assets.xcassets */; };
 		070B565129641423001379BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 070B564F29641423001379BD /* LaunchScreen.storyboard */; };
+		070B565D2964275A001379BD /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B565C2964275A001379BD /* UIColor + ext.swift */; };
+		070B565F296427E5001379BD /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B565E296427E5001379BD /* ExploreViewController.swift */; };
+		070B5661296427F2001379BD /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B5660296427F2001379BD /* FavouritesViewController.swift */; };
+		070B566429642AE6001379BD /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B566329642AE6001379BD /* Resources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		070B564129641422001379BD /* UnsplashApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		070B564429641422001379BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		070B564629641422001379BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		070B564829641422001379BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		070B564829641422001379BD /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		070B564D29641423001379BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		070B565029641423001379BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		070B565229641423001379BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		070B565C2964275A001379BD /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
+		070B565E296427E5001379BD /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		070B5660296427F2001379BD /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		070B566329642AE6001379BD /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,58 @@
 		070B564329641422001379BD /* UnsplashApp */ = {
 			isa = PBXGroup;
 			children = (
+				070B566229642ACD001379BD /* Helpers */,
+				070B565A29641847001379BD /* Resources */,
+				070B56592964181F001379BD /* Application */,
+				070B565829641808001379BD /* Views */,
+			);
+			path = UnsplashApp;
+			sourceTree = "<group>";
+		};
+		070B565829641808001379BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				070B564829641422001379BD /* TabBarController.swift */,
+				070B565E296427E5001379BD /* ExploreViewController.swift */,
+				070B5660296427F2001379BD /* FavouritesViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		070B56592964181F001379BD /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				070B564429641422001379BD /* AppDelegate.swift */,
 				070B564629641422001379BD /* SceneDelegate.swift */,
-				070B564829641422001379BD /* ViewController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		070B565A29641847001379BD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				070B564D29641423001379BD /* Assets.xcassets */,
 				070B564F29641423001379BD /* LaunchScreen.storyboard */,
 				070B565229641423001379BD /* Info.plist */,
 			);
-			path = UnsplashApp;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		070B565B29642735001379BD /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				070B565C2964275A001379BD /* UIColor + ext.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		070B566229642ACD001379BD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				070B565B29642735001379BD /* Extentions */,
+				070B566329642AE6001379BD /* Resources.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				070B564929641422001379BD /* ViewController.swift in Sources */,
+				070B5661296427F2001379BD /* FavouritesViewController.swift in Sources */,
+				070B564929641422001379BD /* TabBarController.swift in Sources */,
+				070B566429642AE6001379BD /* Resources.swift in Sources */,
 				070B564529641422001379BD /* AppDelegate.swift in Sources */,
+				070B565F296427E5001379BD /* ExploreViewController.swift in Sources */,
 				070B564729641422001379BD /* SceneDelegate.swift in Sources */,
+				070B565D2964275A001379BD /* UIColor + ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +333,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QYY3G6W6RG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UnsplashApp/Info.plist;
+				INFOPLIST_FILE = UnsplashApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -306,7 +362,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QYY3G6W6RG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UnsplashApp/Info.plist;
+				INFOPLIST_FILE = UnsplashApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
