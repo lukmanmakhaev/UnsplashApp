@@ -8,6 +8,16 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
+    
+    
+    override func viewDidLoad() {
+            super.viewDidLoad()
+            //let vc1 = UINavigationController(rootViewController: FirstViewController())
+            //let vc2 = UINavigationController(rootViewController: SecondViewController())
+            //let vc3 = UINavigationController(rootViewController: ThirdViewController())
+
+            //viewControllers = [vc1, vc2, vc3]
+        }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
