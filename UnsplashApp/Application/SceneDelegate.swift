@@ -19,13 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = TabBarController()
         
-        
-        
+        //UIImage(named: "phones")!.withRenderingMode(.alwaysTemplate)
+        //UIImage(systemName: "square.grid.3x3.fill")
         let exploreVC = ExploreViewController()
-        exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "square.grid.3x3.fill"), selectedImage: nil)
+        exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(named: "explore")!.withRenderingMode(.alwaysTemplate), selectedImage: nil)
         
         let favouriteVC = FavouritesViewController()
-        favouriteVC.tabBarItem = UITabBarItem(title: "Favourite", image: UIImage(systemName: "star.fill"), selectedImage: nil)
+        favouriteVC.tabBarItem = UITabBarItem(title: "Favourite", image: UIImage(named: "favourite")!.withRenderingMode(.alwaysTemplate), selectedImage: nil)
         
         
         tabBarController.setViewControllers([exploreVC, favouriteVC], animated: false)
