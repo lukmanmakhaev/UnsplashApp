@@ -53,7 +53,7 @@ class ExploreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Random pictures"
+        title = "Random collection"
         //picsCollectionView.delegate = self
         picsCollectionView.delegate2 = self
         //self.navigationController?.pushViewController(detailsVC, animated: true)
@@ -86,10 +86,10 @@ class ExploreViewController: UIViewController {
 }
 
 extension ExploreViewController: PicturesCollectionViewDelegate {
-    func tapped(string: String, picture: String, location: String) {
+    func tapped(string: String, picture: String, location: String, date: String, likes: Int) {
 
         
-        detailsVC.updateData(title: string, picture: picture, location: location)
+        detailsVC.updateData(title: string, picture: picture, location: location, date: date, likes: String(likes))
         self.navigationController?.pushViewController(detailsVC, animated: true)
 
     }

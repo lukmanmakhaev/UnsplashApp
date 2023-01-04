@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 protocol PicturesCollectionViewDelegate {
-    func tapped(string: String, picture: String, location: String)
+    func tapped(string: String, picture: String, location: String, date: String, likes: Int)
 }
 
 
@@ -90,7 +90,9 @@ class PicturesCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         //delegate2?.tapped(string: picsList[indexPath.row].name, picture: pic)
         delegate2?.tapped(string: picsList[indexPath.row].name,
                           picture: picsList[indexPath.row].raw,
-                          location: picsList[indexPath.row].safeLocation
+                          location: picsList[indexPath.row].safeLocation,
+                          date: picsList[indexPath.row].createdAt,
+                          likes: picsList[indexPath.row].likes
         )
     }
     
