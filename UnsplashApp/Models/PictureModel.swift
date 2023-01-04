@@ -27,8 +27,23 @@ struct PictureModel {
         //user
         let name: String
         let profile_image: String
+        let location: String?
+        
+        
+        var safeLocation: String {
+            if location != nil {
+                let string = location
+                return string!
+            } else {
+                let string = " - "
+                return string
+            }
+        }
+        
         
     }
+    
+    
     
 }
 

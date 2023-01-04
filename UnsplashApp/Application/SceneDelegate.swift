@@ -21,10 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //UIImage(named: "phones")!.withRenderingMode(.alwaysTemplate)
         //UIImage(systemName: "square.grid.3x3.fill")
-        let exploreVC = ExploreViewController()
+        let exploreVC = UINavigationController(rootViewController: ExploreViewController())
+        //let exploreVC = ExploreViewController()
         exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(named: "explore")!.withRenderingMode(.alwaysTemplate), selectedImage: nil)
         
-        let favouriteVC = FavouritesViewController()
+        let favouriteVC = UINavigationController(rootViewController: FavouritesViewController())
+        //let favouriteVC = FavouritesViewController()
         favouriteVC.tabBarItem = UITabBarItem(title: "Favourite", image: UIImage(named: "favourite")!.withRenderingMode(.alwaysTemplate), selectedImage: nil)
         
         

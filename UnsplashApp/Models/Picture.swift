@@ -27,6 +27,7 @@ struct Urls: Codable {
 struct User: Codable {
     let name: String
     let profile_image: ProfileImage
+    let location: String?
     
     
     

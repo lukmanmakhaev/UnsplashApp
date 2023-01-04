@@ -8,9 +8,12 @@
 import UIKit
 
 
+
+
 class ExploreViewController: UIViewController {
     
-    var picturesManager = PicturesManager()
+    var detailsVC = DetailsViewController()
+    var picturesVC = PicturesCollectionView()
     
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -20,31 +23,41 @@ class ExploreViewController: UIViewController {
         return searchBar
     }()
     
-    var randomLabel: UILabel = {
+
+    /*var randomLabel: UILabel = {
         let label = UILabel()
         label.text = "Random pictures"
         label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
+    }()*/
+     
     
     var picture: UIImageView = {
         let pic = UIImageView()
-        pic.contentMode = .scaleAspectFill
+        //pic.contentMode = .scaleAspectFill
         pic.translatesAutoresizingMaskIntoConstraints = false
         return pic
     }()
+     
+    private var picsCollectionView = PicturesCollectionView()
     
-    var picsList: [PictureModel.PictureItem] = []
+    var collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        flowLayout.scrollDirection = .vertical
+        return cv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        picturesManager.delegate = self
-        picturesManager.fetchPhotos()
+        title = "Random pictures"
+        //picsCollectionView.delegate = self
+        picsCollectionView.delegate2 = self
+        //self.navigationController?.pushViewController(detailsVC, animated: true)
         initview()
-        
     }
     
     func initview() {
@@ -54,52 +67,32 @@ class ExploreViewController: UIViewController {
         searchBar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         
-        self.view.addSubview(randomLabel)
+        /*self.view.addSubview(randomLabel)
         randomLabel.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 7).isActive = true
         randomLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         randomLabel.heightAnchor.constraint(equalToConstant: 42).isActive = true
-        randomLabel.widthAnchor.constraint(equalToConstant: 190).isActive = true
+        randomLabel.widthAnchor.constraint(equalToConstant: 190).isActive = true*/
         
-        self.view.addSubview(picture)
-        picture.topAnchor.constraint(equalTo: randomLabel.bottomAnchor, constant: 7).isActive = true
-        picture.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        picture.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        picture.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        self.view.addSubview(picsCollectionView)
+        picsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        picsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        picsCollectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
+        picsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        picsCollectionView.contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         
-    }   
+    }
+
+    
 }
 
+extension ExploreViewController: PicturesCollectionViewDelegate {
+    func tapped(string: String, picture: String, location: String) {
 
-extension ExploreViewController: PicturesManagerDelegate {
-    func didUpdatePicture(picture: PictureModel) {
-        DispatchQueue.main.async {
-            self.picsList = picture.picsArray
-            
+        
+        detailsVC.updateData(title: string, picture: picture, location: location)
+        self.navigationController?.pushViewController(detailsVC, animated: true)
 
-        }
     }
     
-    func didFailWithError(_ error: Error) {
-        print(error)
-    }
-}
 
-extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        picsList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.cellForItem(at: indexPath) as! ExploreViewPicCell
-        
-        
-        
-        return cell
-    }
-    
-    
-    
-    
-    
 }
