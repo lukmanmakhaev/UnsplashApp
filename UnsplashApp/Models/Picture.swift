@@ -14,12 +14,14 @@ struct Picture: Codable {
     let urls: Urls
     let likes: Int
     let user: User
+    let downloads: Int
     
     
 }
 
 struct Urls: Codable {
     let raw: String
+    let regular: String
     let small: String
   
 }

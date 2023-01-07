@@ -9,14 +9,10 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
+    var favouritesList: [PictureModel.PictureItem] = []
     
     override func viewDidLoad() {
             super.viewDidLoad()
-            //let vc1 = UINavigationController(rootViewController: FirstViewController())
-            //let vc2 = UINavigationController(rootViewController: SecondViewController())
-            //let vc3 = UINavigationController(rootViewController: ThirdViewController())
-
-            //viewControllers = [vc1, vc2, vc3]
         }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -31,13 +27,14 @@ final class TabBarController: UITabBarController {
     private func setTabBarAppearance() {
         
         tabBar.tintColor = Resources.Colors.active
-        tabBar.barTintColor = Resources.Colors.inactive
+        tabBar.barTintColor = .white
         tabBar.backgroundColor = .white
         tabBar.layer.borderColor = Resources.Colors.separator.cgColor
         tabBar.layer.borderWidth = 1
-        tabBar.layer.masksToBounds = true
+        //tabBar.layer.masksToBounds = true
     
     }
+    
 
 }
 

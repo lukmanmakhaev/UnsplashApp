@@ -37,16 +37,12 @@ class PicCell: UICollectionViewCell {
         picture.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         picture.topAnchor.constraint(equalTo: topAnchor).isActive = true
         picture.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        picture.backgroundColor = .red
+        picture.backgroundColor = .gray
    
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func set(pics: PictureModel.PictureItem) {
-        
     }
     
 }
