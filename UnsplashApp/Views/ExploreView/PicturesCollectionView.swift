@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 protocol PicturesCollectionViewDelegate {
-    func tapped(string: String, picture: String, location: String, date: String, likes: Int)
+    func tapped(item: PictureModel.PictureItem )
 }
 
 
@@ -18,7 +18,6 @@ class PicturesCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     var picsList: [PictureModel.PictureItem] = []
     var picturesManager = PicturesManager()
     var detailsVC = DetailsViewController()
-    
     var delegate2: PicturesCollectionViewDelegate?
     
     
@@ -27,6 +26,10 @@ class PicturesCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         layout.scrollDirection = .vertical
         super.init(frame: .zero, collectionViewLayout: layout)
         
+        let refreshControl = UIRefreshControl()
+        self.refreshControl = refreshControl
+        
+        refreshControl.addTarget(self, action: #selector(refreshPhotos(_:)), for: .valueChanged)
         
         picturesManager.delegate = self
         picturesManager.fetchPhotos()
@@ -41,10 +44,19 @@ class PicturesCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         
     }
     
+    func searchByWord(keyword: String) {
+        picturesManager.fetchPhotos(keyWord: keyword)
+        self.reloadData()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func refreshPhotos(_ sender: Any) {
+        // Fetch Weather Data
+        picturesManager.fetchPhotos()
+    }
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -79,23 +91,10 @@ class PicturesCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let cell = collectionView.cellForItem(at: indexPath) as? PicCell
         
-        let url = picsList[indexPath.row].raw
-        let pic = UIImageView()
-        pic.kf.setImage(with: URL(string: url))
         
-        //print(picsList[indexPath.row].safeLocation)
-
-        
-   
-        //delegate2?.tapped(string: picsList[indexPath.row].name, picture: pic)
-        delegate2?.tapped(string: picsList[indexPath.row].name,
-                          picture: picsList[indexPath.row].raw,
-                          location: picsList[indexPath.row].safeLocation,
-                          date: picsList[indexPath.row].createdAt,
-                          likes: picsList[indexPath.row].likes
-        )
+        delegate2?.tapped(item: picsList[indexPath.row])
     }
-    
+  
 }
 
 extension PicturesCollectionView: PicturesManagerDelegate {
@@ -103,7 +102,11 @@ extension PicturesCollectionView: PicturesManagerDelegate {
     func didUpdatePicture(picture: PictureModel) {
         DispatchQueue.main.async {
             self.picsList = picture.picsArray
+            
+            
             self.reloadData()
+            self.refreshControl?.endRefreshing()
+            
         }
     }
     

@@ -16,6 +16,7 @@
 		070B565F296427E5001379BD /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B565E296427E5001379BD /* ExploreViewController.swift */; };
 		070B5661296427F2001379BD /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B5660296427F2001379BD /* FavouritesViewController.swift */; };
 		070B566429642AE6001379BD /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B566329642AE6001379BD /* Resources.swift */; };
+		070D7BC62966CECD0024CE00 /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070D7BC52966CECD0024CE00 /* FavouriteCell.swift */; };
 		07183ACE296452DA009AEF3B /* PictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07183ACD296452DA009AEF3B /* PictureModel.swift */; };
 		07183AD029648A40009AEF3B /* PicturesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07183ACF29648A40009AEF3B /* PicturesManager.swift */; };
 		07183AD22964A341009AEF3B /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07183AD12964A341009AEF3B /* Picture.swift */; };
@@ -37,6 +38,7 @@
 		070B565E296427E5001379BD /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		070B5660296427F2001379BD /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		070B566329642AE6001379BD /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		070D7BC52966CECD0024CE00 /* FavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCell.swift; sourceTree = "<group>"; };
 		07183ACD296452DA009AEF3B /* PictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureModel.swift; sourceTree = "<group>"; };
 		07183ACF29648A40009AEF3B /* PicturesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesManager.swift; sourceTree = "<group>"; };
 		07183AD12964A341009AEF3B /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				070B564829641422001379BD /* TabBarController.swift */,
+				07183AD92965B57E009AEF3B /* DetailsViewController.swift */,
 				07183ACA2964525C009AEF3B /* ExploreView */,
 				07183ACB29645272009AEF3B /* FavouritesView */,
 			);
@@ -143,7 +146,6 @@
 				07183ACF29648A40009AEF3B /* PicturesManager.swift */,
 				07183AD3296574F0009AEF3B /* PicCell.swift */,
 				07183AD7296597C5009AEF3B /* PicturesCollectionView.swift */,
-				07183AD92965B57E009AEF3B /* DetailsViewController.swift */,
 			);
 			path = ExploreView;
 			sourceTree = "<group>";
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				070B5660296427F2001379BD /* FavouritesViewController.swift */,
+				070D7BC52966CECD0024CE00 /* FavouriteCell.swift */,
 			);
 			path = FavouritesView;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				070B565F296427E5001379BD /* ExploreViewController.swift in Sources */,
 				070B564729641422001379BD /* SceneDelegate.swift in Sources */,
 				07183ACE296452DA009AEF3B /* PictureModel.swift in Sources */,
+				070D7BC62966CECD0024CE00 /* FavouriteCell.swift in Sources */,
 				07183AD8296597C5009AEF3B /* PicturesCollectionView.swift in Sources */,
 				07183AD22964A341009AEF3B /* Picture.swift in Sources */,
 				07183ADA2965B57E009AEF3B /* DetailsViewController.swift in Sources */,

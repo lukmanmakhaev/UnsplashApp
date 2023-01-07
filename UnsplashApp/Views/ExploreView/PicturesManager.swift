@@ -16,12 +16,16 @@ protocol PicturesManagerDelegate {
 }
 struct PicturesManager {
     //https://api.unsplash.com/photos/random/?client_id=TiRhpw7YbVhu6Wx2v6_yAgaogsIZHTWsdU63ZufnPk4
-    let urlString = "https://api.unsplash.com/collections/6781352/photos/?client_id=TiRhpw7YbVhu6Wx2v6_yAgaogsIZHTWsdU63ZufnPk4"
+    let urlString = "https://api.unsplash.com/photos/random/?client_id=TiRhpw7YbVhu6Wx2v6_yAgaogsIZHTWsdU63ZufnPk4&count=30"
     
     var delegate: PicturesManagerDelegate?
     
     func fetchPhotos() {
         performRequest(with: urlString)
+    }
+    
+    func fetchPhotos(keyWord: String) {
+        performRequest(with: "\(urlString)&query=office")
     }
     
     
@@ -60,7 +64,9 @@ struct PicturesManager {
                 
                 picsArray.append(PictureModel.PictureItem(id: list[index].id,
                                                           createdAt: list[index].created_at,
+                                                          downloads: list[index].downloads,
                                                           raw: list[index].urls.raw,
+                                                          regular: list[index].urls.regular,
                                                           small: list[index].urls.small,
                                                           likes: list[index].likes,
                                                           name: list[index].user.name,

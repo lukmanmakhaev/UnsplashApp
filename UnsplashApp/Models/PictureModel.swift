@@ -16,9 +16,11 @@ struct PictureModel {
         //description
         let id: String
         let createdAt: String
+        let downloads: Int
         
         //picture
         let raw: String
+        let regular: String
         let small: String
         
         //likes
@@ -35,10 +37,14 @@ struct PictureModel {
                 let string = location
                 return string!
             } else {
-                let string = " - "
+                let string = "-"
                 return string
             }
         }
+        
+        var isFavourite = false
+        
+        var indexNum: Int?
         
         
     }
