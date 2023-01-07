@@ -61,6 +61,9 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        //favouritesVC.delegate4 = self
+    
+        
         if pictureItem!.isFavourite == true {
             favoriteButton.setTitle("Delete from favourites", for: .normal)
         } else if pictureItem!.isFavourite == false {
@@ -127,7 +130,6 @@ class DetailsViewController: UIViewController {
         pic.kf.setImage(with: URL(string: picUrl))
         
         self.title = item.name
-        
     }
     
     @objc func favoriteButtonPressed(sender: UIButton!) {
@@ -169,7 +171,7 @@ class DetailsViewController: UIViewController {
 
         
         //favoriteButton.tintColor = .gray
-        //self.dismiss(animated: true)
+        self.dismiss(animated: true)
         
     }
     
