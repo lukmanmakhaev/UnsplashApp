@@ -9,10 +9,31 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
-    var favouritesList: [PictureModel.PictureItem] = []
     
     override func viewDidLoad() {
             super.viewDidLoad()
+
+        //let exploreVC = UINavigationController(rootViewController: ExploreViewController())
+        let exploreVC = ExploreViewController()
+        let favouriteVC = FavouritesViewController()
+        let editVC = EditViewController(collectionViewLayout: UICollectionViewFlowLayout())
+
+
+        //exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(named: "explore")!.withRenderingMode(.alwaysTemplate), selectedImage: nil)
+        
+       // let favouriteVC = UINavigationController(rootViewController: FavouritesViewController())
+        //favouriteVC.tabBarItem = UITabBarItem(title: "Favourite", image: UIImage(named: "favourite")!.withRenderingMode(.alwaysTemplate), selectedImage: nil)
+        
+        
+        //viewControllers = [exploreVC, favouriteVC]
+        
+        
+        viewControllers = [
+            generateNavigationController(rootViewController: exploreVC, title: "Explore", image: UIImage(named: "explore")!.withRenderingMode(.alwaysTemplate)),
+            generateNavigationController(rootViewController: favouriteVC, title: "Favourites", image: UIImage(named: "favourite")!.withRenderingMode(.alwaysTemplate)),
+            generateNavigationController(rootViewController: editVC, title: "Edit", image: UIImage(named: "favourite")!.withRenderingMode(.alwaysTemplate))
+        ]
+        
         }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -35,6 +56,12 @@ final class TabBarController: UITabBarController {
     
     }
     
-
+    private func generateNavigationController(rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
+        let navigationVC = UINavigationController(rootViewController: rootViewController)
+        navigationVC.tabBarItem.title = title
+        navigationVC.tabBarItem.image = image
+        return navigationVC
+    }
+    
 }
 

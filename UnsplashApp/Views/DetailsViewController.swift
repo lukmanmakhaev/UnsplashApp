@@ -61,6 +61,9 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        //favouritesVC.delegate4 = self
+    
+        
         if pictureItem!.isFavourite == true {
             favoriteButton.setTitle("Delete from favourites", for: .normal)
         } else if pictureItem!.isFavourite == false {
@@ -127,7 +130,6 @@ class DetailsViewController: UIViewController {
         pic.kf.setImage(with: URL(string: picUrl))
         
         self.title = item.name
-        
     }
     
     @objc func favoriteButtonPressed(sender: UIButton!) {
@@ -147,11 +149,16 @@ class DetailsViewController: UIViewController {
         if pictureItem?.isFavourite != true {
             pictureItem?.isFavourite = true
             pictureItem?.indexNum = favouritesVC.favouritesList.count + 1
+            //print("indexpath \(String(describing: pictureItem!.indexNum!)) ")
             
             favouritesVC.favouritesList.append(pictureItem!)
+            print("favouritesVC items are \(String(describing: favouritesVC.favouritesList.count)) ")
         } else {
             pictureItem?.isFavourite = false
             favouritesVC.favouritesList.remove(at: (pictureItem?.indexNum)! - 1)
+            //print("deleted from list \(String(describing: pictureItem!.indexNum!)) ")
+            //print("favouritesVC items are \(String(describing: favouritesVC.favouritesList.count)) ")
+
         }
         
         if pictureItem!.isFavourite == true {
@@ -159,8 +166,10 @@ class DetailsViewController: UIViewController {
         } else if pictureItem!.isFavourite == false {
             favoriteButton.setTitle("Add to favourites", for: .normal)
         }
-
+        
+        print("favouritesVC items are \(String(describing: favouritesVC.favouritesList.count)) ")
         favouritesVC.tableView.reloadData()
+        print("favouritesVC items are \(String(describing: favouritesVC.favouritesList.count)) ")
         
     }
     
@@ -169,7 +178,7 @@ class DetailsViewController: UIViewController {
 
         
         //favoriteButton.tintColor = .gray
-        //self.dismiss(animated: true)
+        self.dismiss(animated: true)
         
     }
     

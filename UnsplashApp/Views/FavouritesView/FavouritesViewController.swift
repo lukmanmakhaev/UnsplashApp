@@ -40,7 +40,7 @@ class FavouritesViewController: UIViewController {
         
 
     }
-    
+
     func initView() {
         
         self.view.addSubview(tableView)
@@ -61,6 +61,8 @@ class FavouritesViewController: UIViewController {
     
     
 }
+
+//item: PictureModel.PictureItem
 
 extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
