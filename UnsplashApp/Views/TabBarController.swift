@@ -13,10 +13,8 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
             super.viewDidLoad()
 
-        //let exploreVC = UINavigationController(rootViewController: ExploreViewController())
-        let exploreVC = ExploreViewController()
+        let exploreVC = ExploreViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let favouriteVC = FavouritesViewController()
-        let editVC = EditViewController(collectionViewLayout: UICollectionViewFlowLayout())
 
 
         //exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(named: "explore")!.withRenderingMode(.alwaysTemplate), selectedImage: nil)
@@ -31,7 +29,7 @@ final class TabBarController: UITabBarController {
         viewControllers = [
             generateNavigationController(rootViewController: exploreVC, title: "Explore", image: UIImage(named: "explore")!.withRenderingMode(.alwaysTemplate)),
             generateNavigationController(rootViewController: favouriteVC, title: "Favourites", image: UIImage(named: "favourite")!.withRenderingMode(.alwaysTemplate)),
-            generateNavigationController(rootViewController: editVC, title: "Edit", image: UIImage(named: "favourite")!.withRenderingMode(.alwaysTemplate))
+
         ]
         
         }

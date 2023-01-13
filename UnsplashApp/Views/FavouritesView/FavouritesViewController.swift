@@ -8,9 +8,14 @@
 import UIKit
 
 
-class FavouritesViewController: UIViewController {
+class FavouritesViewController: UIViewController{
     
-    let detailsVC = DetailsViewController()
+    var favsList: [PictureModel.PictureItem] = []
+
+    var detailsVC = DetailsViewController()
+
+    let favsDetailsVC = FavouritesDetailsVC()
+    //let detailsVC = DetailsViewController()
     
     var tableView: UITableView = {
         let t = UITableView()
@@ -32,8 +37,6 @@ class FavouritesViewController: UIViewController {
         initView()
     
     }
-    
-    var favouritesList: [PictureModel.PictureItem] = []
     
     @objc func refreshList(_ sender: Any) {
         tableView.reloadData()
@@ -68,33 +71,37 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouriteCell", for: indexPath) as! FavouriteCell
     
-        let url = favouritesList[indexPath.row].small
+        //let url = favouritesList[indexPath.row].small
         
-        cell.picture.kf.setImage(with: URL(string: url))
+        //cell.picture.kf.setImage(with: URL(string: url))
         
-        cell.authorLabel.text = favouritesList[indexPath.row].name
+        //cell.authorLabel.text = favouritesList[indexPath.row].name
         
         return cell
     }
 
     @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favouritesList.count
+        return 50
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //let cell = tableView.cellForRow(at: indexPath) as? FavouriteCell
         //self.present(detailsVC, animated: true, completion: nil)
-        self.navigationController?.pushViewController(detailsVC, animated: true)
+        //self.navigationController?.pushViewController(expDetailsVC, animated: true)
         
-        //delegate4?.favorCellChoosed(item: favouritesList[indexPath.row])
         
-        detailsVC.updateData(item: favouritesList[indexPath.row])
+        //expDetailsVC.updateData(item: favouritesList[indexPath.row])
+        
+       
+        present(favsDetailsVC, animated: true)
+        print(favsList.count)
+        
         
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? FavouriteCell
+        
+        //let cell = tableView.cellForRow(at: indexPath) as? FavouriteCell
     }
     
 }
-

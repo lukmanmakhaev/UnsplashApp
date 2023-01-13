@@ -7,7 +7,7 @@
 
 import UIKit
 
-let detailsVC = DetailsViewController()
+
 
 class FavouriteCell: UITableViewCell {
     

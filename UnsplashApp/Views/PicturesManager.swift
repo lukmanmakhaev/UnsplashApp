@@ -25,7 +25,7 @@ struct PicturesManager {
     }
     
     func fetchPhotos(keyWord: String) {
-        performRequest(with: "\(urlString)&query=office")
+        performRequest(with: "\(urlString)&query=\(keyWord)")
     }
     
     
@@ -73,7 +73,6 @@ struct PicturesManager {
                                                           profile_image: list[index].user.profile_image.large,
                                                           location: list[index].user.location
                                                           ))
-                
             }
             
             //print(picsArray)
