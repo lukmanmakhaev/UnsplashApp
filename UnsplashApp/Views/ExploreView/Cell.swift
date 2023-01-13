@@ -1,18 +1,18 @@
 //
-//  ExploreViewPicCell.swift
+//  Cell.swift
 //  UnsplashApp
 //
-//  Created by Lukman Makhaev on 04.01.2023.
+//  Created by Lukman Makhaev on 11.01.2023.
 //
 
 import UIKit
 import Kingfisher
 
 
-class PicCell: UICollectionViewCell {
+class Cell: UICollectionViewCell {
     
     
-    static let reuseId = "PicCell"
+    static let reuseId = "Cell"
     
     var picUrl = String()
     
@@ -46,3 +46,4 @@ class PicCell: UICollectionViewCell {
     }
     
 }
+
