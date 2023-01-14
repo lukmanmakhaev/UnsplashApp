@@ -6,15 +6,14 @@
 //
 
 
-import Foundation
 import UIKit
 
 
 class DetailsViewController: UIViewController {
     
-    var pictureItem: PictureModel.PictureItem?
-
-    var favsList: [PictureModel.PictureItem] = []
+    var favsList = [PictureModel.PictureItem]()
+    
+    //var pictureItem: PictureModel.PictureItem?
 
     var indexPath = Int()
     
@@ -61,6 +60,7 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
 
     }
     

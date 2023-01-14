@@ -8,14 +8,19 @@
 import UIKit
 
 
-class FavouritesViewController: UIViewController{
+class FavouritesViewController: UIViewController, FavourDelegate {
     
-    var favsList: [PictureModel.PictureItem] = []
-
-    var detailsVC = DetailsViewController()
-
+    func passItem(item: PictureModel.PictureItem) {
+        favsArray.append(item)
+        tableView.reloadData()
+        print(favsArray.count)
+    }
+    
+    
+    var favsArray: [PictureModel.PictureItem] = []
+    
+    var expDVC = ExploreDetailsVC()
     let favsDetailsVC = FavouritesDetailsVC()
-    //let detailsVC = DetailsViewController()
     
     var tableView: UITableView = {
         let t = UITableView()
@@ -31,6 +36,10 @@ class FavouritesViewController: UIViewController{
         super.viewDidLoad()
         view.backgroundColor = Resources.Colors.background
         title = "Favourites"
+        
+        //let detailsVC = DetailsViewController()
+    
+        expDVC.delegateFavour = self
         
         
         tableView.reloadData()
@@ -94,7 +103,7 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
         
        
         present(favsDetailsVC, animated: true)
-        print(favsList.count)
+        print(favsArray.count)
         
         
     }
@@ -105,3 +114,5 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+
