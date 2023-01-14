@@ -90,7 +90,7 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return favsArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
