@@ -8,17 +8,16 @@
 import UIKit
 
 class ExploreViewController: UICollectionViewController {
-    
-    let favsVC = FavouritesViewController()
-    var favsList: [PictureModel.PictureItem] = []
-    
+        
+	var keyWord = String()
     var picsList: [PictureModel.PictureItem] = []
-    var expDetailsVC = ExploreDetailsVC()
-    var detailsVC = DetailsViewController()
-    var picsManager = PicturesManager()
-    var keyWord = String()
     
+	var picsManager = PicturesManager()
+	var expDetailsVC: ExploreDetailsVC?
     
+    // MARK: - UI
+	let refreshControl = UIRefreshControl()
+	
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.barTintColor = UIColor.white
@@ -34,8 +33,7 @@ class ExploreViewController: UICollectionViewController {
         return pic
     }()
     
-    let refreshControl = UIRefreshControl()
-    
+	// MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Resources.Colors.background
@@ -54,8 +52,6 @@ class ExploreViewController: UICollectionViewController {
         
         navigationItem.titleView = searchBar
         searchBar.delegate = self
-        
-
     }
     
     @objc func refreshPhotos(_ sender: Any) {
@@ -99,9 +95,10 @@ class ExploreViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let cell = collectionView.cellForItem(at: indexPath) as? PicCell
  
-        expDetailsVC.updateData(item: picsList[indexPath.row])
-        expDetailsVC.indexPath = indexPath.row
-        present(expDetailsVC, animated: true)
+		guard let detailController = expDetailsVC else { return }
+		detailController.updateData(item: picsList[indexPath.row])
+		detailController.indexPath = indexPath.row
+		present(detailController, animated: true)
     }
     
 }

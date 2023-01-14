@@ -12,27 +12,22 @@ protocol FavourDelegate {
     func passItem(item: PictureModel.PictureItem)
 }
 
-
-class ExploreDetailsVC: DetailsViewController {
+class ExploreDetailsVC: BaseDetailsViewController {
     
+	// MARK: - Properties
     var delegateFavour: FavourDelegate?
-    
-    //let favsVC = FavouritesViewController()
-    
     var pictureItem: PictureModel.PictureItem?
 
-    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
-        
-        initConstraints()
+		super.viewDidLoad()
+		
         favoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
-        
     }
     
     func updateData(item: PictureModel.PictureItem) {
         pictureItem = item
-        
-        
+                		
         if pictureItem!.isFavourite == true {
             favoriteButton.setTitle("Delete from favourites", for: .normal)
         } else if pictureItem!.isFavourite == false {
@@ -49,35 +44,16 @@ class ExploreDetailsVC: DetailsViewController {
     }
     
     @objc func favoriteButtonPressed(sender: UIButton!) {
-
         //let navVC = tabBarController?.viewControllers? [1] as! UINavigationController
         //let favsVC = navVC.topViewController as! FavouritesViewController
-        
         if pictureItem?.isFavourite != true {
             favoriteButton.setTitle("Delete from favourites", for: .normal)
             pictureItem?.isFavourite = true
             pictureItem?.indexNum = favsList.count + 1
             self.delegateFavour?.passItem(item: pictureItem!)
-
-            //print("indexpath \(String(describing: pictureItem!.indexNum!)) ")
         } else {
             favoriteButton.setTitle("Add to favourites", for: .normal)
             pictureItem?.isFavourite = false
-            //favsList.remove(at: (pictureItem?.indexNum)! - 1)
-            //print("deleted from list \(String(describing: pictureItem!.indexNum!)) ")
-            //print("favouritesVC items are \(String(describing: favouritesVC.favouritesList.count)) ")
-        }
-
-        
+        }        
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        
-        //favoriteButton.tintColor = .gray
-        self.dismiss(animated: true)
-        
-    }
-    
 }

@@ -5,20 +5,16 @@
 //  Created by Lukman Makhaev on 04.01.2023.
 //
 
-
 import UIKit
 
-
-class DetailsViewController: UIViewController {
+class BaseDetailsViewController: UIViewController {
     
+	// MARK: - Public propertyr
+	var indexPath = Int()
+	var picUrl = String()
     var favsList = [PictureModel.PictureItem]()
     
-    //var pictureItem: PictureModel.PictureItem?
-
-    var indexPath = Int()
-    
-    var picUrl = String()
-
+	// MARK: - UI
     var pic: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +44,7 @@ class DetailsViewController: UIViewController {
     let favoriteButton: UIButton = {
         let button = UIButton()
         //button.image = UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate)
-        button.setTitle("Add to favourites", for: .normal)
+        // button.setTitle("Add to favourites", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.clipsToBounds = true
         button.backgroundColor = UIColor.init(hexString: "FFB200")
@@ -57,16 +53,14 @@ class DetailsViewController: UIViewController {
         return button
     }()
     
-    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
     
-
+		initConstraints()
     }
-    
-    
-    func initConstraints() {
-
+        
+    private func initConstraints() {
         view.backgroundColor = Resources.Colors.background
         
         view.addSubview(pic)
@@ -96,5 +90,4 @@ class DetailsViewController: UIViewController {
         favoriteButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         favoriteButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
- 
 }

@@ -7,16 +7,16 @@
 
 import UIKit
 
-class FavouritesDetailsVC: DetailsViewController {
+class FavouritesDetailsVC: BaseDetailsViewController {
     
+	// MARK: - Properties
+	var pictureItem: PictureModel.PictureItem?
     var favourites: [PictureModel.PictureItem] = []
     
-    
-    var pictureItem: PictureModel.PictureItem?
-
-    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
-        initConstraints()
+		super.viewDidLoad()
+
         favoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
     }
     
@@ -53,16 +53,5 @@ class FavouritesDetailsVC: DetailsViewController {
             //favouritesVC.favouritesList.remove(at: (pictureItem?.indexNum)! - 1)
             //favsList.remove(at: (pictureItem?.indexNum)! - 1)
         }
-        
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        
-        //favoriteButton.tintColor = .gray
-        self.dismiss(animated: true)
-        
-    }
-    
 }

@@ -14,6 +14,7 @@ protocol PicturesManagerDelegate {
     func didFailWithError(_ error: Error)
     
 }
+
 struct PicturesManager {
     //https://api.unsplash.com/photos/random/?client_id=TiRhpw7YbVhu6Wx2v6_yAgaogsIZHTWsdU63ZufnPk4
     let urlString = "https://api.unsplash.com/photos/random/?client_id=TiRhpw7YbVhu6Wx2v6_yAgaogsIZHTWsdU63ZufnPk4&count=30"
