@@ -8,11 +8,19 @@
 
 import UIKit
 
+protocol FavourDelegate {
+    func passItem(item: PictureModel.PictureItem)
+}
+
 
 class ExploreDetailsVC: DetailsViewController {
     
+    var delegateFavour: FavourDelegate?
+    
     //let favsVC = FavouritesViewController()
-    let detailsVC = DetailsViewController()
+    
+    var pictureItem: PictureModel.PictureItem?
+
     
     override func viewDidLoad() {
         
@@ -49,19 +57,17 @@ class ExploreDetailsVC: DetailsViewController {
             favoriteButton.setTitle("Delete from favourites", for: .normal)
             pictureItem?.isFavourite = true
             pictureItem?.indexNum = favsList.count + 1
-            
-            favsList.append(pictureItem!)
+            self.delegateFavour?.passItem(item: pictureItem!)
+
             //print("indexpath \(String(describing: pictureItem!.indexNum!)) ")
         } else {
             favoriteButton.setTitle("Add to favourites", for: .normal)
             pictureItem?.isFavourite = false
-            favsList.remove(at: (pictureItem?.indexNum)! - 1)
+            //favsList.remove(at: (pictureItem?.indexNum)! - 1)
             //print("deleted from list \(String(describing: pictureItem!.indexNum!)) ")
             //print("favouritesVC items are \(String(describing: favouritesVC.favouritesList.count)) ")
         }
 
-        
-        print(favsList.count)
         
     }
     

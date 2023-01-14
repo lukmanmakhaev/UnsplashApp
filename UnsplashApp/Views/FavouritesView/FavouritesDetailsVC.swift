@@ -9,6 +9,11 @@ import UIKit
 
 class FavouritesDetailsVC: DetailsViewController {
     
+    var favourites: [PictureModel.PictureItem] = []
+    
+    
+    var pictureItem: PictureModel.PictureItem?
+
     
     override func viewDidLoad() {
         initConstraints()
@@ -61,14 +66,3 @@ class FavouritesDetailsVC: DetailsViewController {
     }
     
 }
-
-/*extension DetailsViewController: FavouritesViewControllerDelegate {
-    func favorCellChoosed(item: PictureModel.PictureItem) {
-        
-        updateData(item: item)
-        favouritesVC.tableView.reloadData()
-        print("pictureItem was updated")
-    }
- 
-}*/
-

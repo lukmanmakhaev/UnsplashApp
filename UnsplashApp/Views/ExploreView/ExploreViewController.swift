@@ -41,6 +41,7 @@ class ExploreViewController: UICollectionViewController {
         view.backgroundColor = Resources.Colors.background
         picsManager.delegate = self
         picsManager.fetchPhotos()
+
         
         refreshControl.addTarget(self, action: #selector(refreshPhotos(_:)), for: .valueChanged)
         
