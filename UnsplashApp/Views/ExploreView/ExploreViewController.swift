@@ -11,6 +11,7 @@ class ExploreViewController: UICollectionViewController {
         
 	var keyWord = String()
     var picsList: [PictureModel.PictureItem] = []
+    var someVar = 123
     
     //test
     var picsManager: PictureManager?
@@ -104,6 +105,7 @@ class ExploreViewController: UICollectionViewController {
         //print(detailController.indexNum)
 		//detailController.indexPath = indexPath.row
 		present(detailController, animated: true)
+        
     }
     
 }
