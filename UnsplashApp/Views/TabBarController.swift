@@ -13,14 +13,22 @@ final class TabBarController: UITabBarController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let exploreDetailVC = ExploreDetailsVC()
+        let pictureManager = PictureManager()
+        
+        //print(pictureManager.text)
+        pictureManager.delegateNetworkManager()
+        //var array1 = pictureManager.getPicturesArray()
+        
 		
 		let exploreVC = ExploreViewController(collectionViewLayout: UICollectionViewFlowLayout())
-		exploreVC.expDetailsVC = exploreDetailVC
-		
-		
+        exploreVC.expDetailsVC = pictureManager.exploreDVC
+        exploreVC.picsManager = pictureManager
+        
+        
 		let favouriteVC = FavouritesViewController()
-		favouriteVC.expDVC = exploreDetailVC
+        favouriteVC.expDVC = pictureManager.exploreDVC
+        favouriteVC.pictureManager = pictureManager
+        favouriteVC.favsArray = pictureManager.favouritesArray
 		
 		
 		viewControllers = [

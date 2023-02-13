@@ -8,18 +8,18 @@
 import UIKit
 import Kingfisher
 
-protocol PicturesManagerDelegate {
+protocol NetworkServiceDelegate {
     
     func didUpdatePicture(picture: PictureModel)
     func didFailWithError(_ error: Error)
     
 }
 
-struct PicturesManager {
+struct NetworkService {
     //https://api.unsplash.com/photos/random/?client_id=TiRhpw7YbVhu6Wx2v6_yAgaogsIZHTWsdU63ZufnPk4
     let urlString = "https://api.unsplash.com/photos/random/?client_id=TiRhpw7YbVhu6Wx2v6_yAgaogsIZHTWsdU63ZufnPk4&count=30"
     
-    var delegate: PicturesManagerDelegate?
+    var delegate: NetworkServiceDelegate?
     
     func fetchPhotos() {
         performRequest(with: urlString)

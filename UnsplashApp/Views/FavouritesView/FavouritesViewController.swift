@@ -11,8 +11,11 @@ class FavouritesViewController: UIViewController, FavourDelegate {
     
     // MARK: - Properties
 	var expDVC: ExploreDetailsVC?
-    let favsDetailsVC = FavouritesDetailsVC()
-	var favsArray: [PictureModel.PictureItem] = []
+    var favsDVC: FavouritesDetailsVC?
+    //let favsDetailsVC = FavouritesDetailsVC()
+    
+    var pictureManager = PictureManager()
+    var favsArray: [PictureModel.PictureItem]?
     
 	// MARK: - UI
     var tableView: UITableView = {
@@ -27,7 +30,7 @@ class FavouritesViewController: UIViewController, FavourDelegate {
 	// MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+        
         view.backgroundColor = Resources.Colors.background
         title = "Favourites"
     
@@ -42,11 +45,15 @@ class FavouritesViewController: UIViewController, FavourDelegate {
         tableView.reloadData()
     }
 		
-	func passItem(item: PictureModel.PictureItem) {
-		favsArray.append(item)
-		tableView.reloadData()
-		print(favsArray.count)
+	func addItem(item: PictureModel.PictureItem) {
+		favsArray!.append(item)
+		//tableView.reloadData()
+
 	}
+    
+    func reloadTableView() {
+        tableView.reloadData()
+    }
 
     func initView() {
         self.view.addSubview(tableView)
@@ -68,29 +75,30 @@ class FavouritesViewController: UIViewController, FavourDelegate {
 // MARK: - TableView Delegate&DataSource
 extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return favsArray.count
+        return pictureManager.favouritesArray.count
 	}
 	
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouriteCell", for: indexPath) as! FavouriteCell
     
-        //let url = favouritesList[indexPath.row].small
+        let url = pictureManager.favouritesArray[indexPath.row].small
         
-        //cell.picture.kf.setImage(with: URL(string: url))
+        cell.picture.kf.setImage(with: URL(string: url))
         
-        //cell.authorLabel.text = favouritesList[indexPath.row].name
+        cell.authorLabel.text = pictureManager.favouritesArray[indexPath.row].name
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //let cell = tableView.cellForRow(at: indexPath) as? FavouriteCell
-        //self.present(detailsVC, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(expDetailsVC, animated: true)
-                
-        //expDetailsVC.updateData(item: favouritesList[indexPath.row])
-       
-        present(favsDetailsVC, animated: true)
-        print(favsArray.count)
+        
+        guard let detailController = expDVC else { return }
+        detailController.updateData(item: pictureManager.favouritesArray[indexPath.row])
+        detailController.calledFrom = 1
+
+        expDVC!.indexNum = Int(indexPath.row)
+        
+        present(expDVC!, animated: true)
     }
 }

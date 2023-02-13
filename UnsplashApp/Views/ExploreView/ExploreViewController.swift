@@ -12,8 +12,11 @@ class ExploreViewController: UICollectionViewController {
 	var keyWord = String()
     var picsList: [PictureModel.PictureItem] = []
     
-	var picsManager = PicturesManager()
+    //test
+    var picsManager: PictureManager?
+	var networkService = NetworkService()
 	var expDetailsVC: ExploreDetailsVC?
+    
     
     // MARK: - UI
 	let refreshControl = UIRefreshControl()
@@ -37,10 +40,8 @@ class ExploreViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Resources.Colors.background
-        picsManager.delegate = self
-        picsManager.fetchPhotos()
-
         
+        picsManager!.delegate = self
         refreshControl.addTarget(self, action: #selector(refreshPhotos(_:)), for: .valueChanged)
         
         collectionView.delegate = self
@@ -56,7 +57,7 @@ class ExploreViewController: UICollectionViewController {
     
     @objc func refreshPhotos(_ sender: Any) {
         // Fetch Weather Data
-        picsManager.fetchPhotos()
+        //networkService.fetchPhotos()
     }
     
     private func setupCollectionView() {
@@ -96,8 +97,12 @@ class ExploreViewController: UICollectionViewController {
         //let cell = collectionView.cellForItem(at: indexPath) as? PicCell
  
 		guard let detailController = expDetailsVC else { return }
+        detailController.picsManager = self.picsManager
 		detailController.updateData(item: picsList[indexPath.row])
-		detailController.indexPath = indexPath.row
+        detailController.indexNum = Int(indexPath.row)
+        detailController.calledFrom = 0
+        //print(detailController.indexNum)
+		//detailController.indexPath = indexPath.row
 		present(detailController, animated: true)
     }
     
@@ -141,23 +146,19 @@ extension ExploreViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        picsManager.fetchPhotos(keyWord: self.keyWord)
-
+        picsManager!.fetchPhotos(keyWord: self.keyWord)
+        
     }
 }
 
-extension ExploreViewController: PicturesManagerDelegate {
-    
-    func didUpdatePicture(picture: PictureModel) {
+extension ExploreViewController: PictureManagerDelegate {
+    func getArray(getArray: [PictureModel.PictureItem]) {
         DispatchQueue.main.async {
-            self.picsList = picture.picsArray
-            
+            self.picsList = getArray
             self.collectionView.reloadData()
-            self.refreshControl.endRefreshing()
             
         }
     }
-    
     func didFailWithError(_ error: Error) {
         print(error)
     }
