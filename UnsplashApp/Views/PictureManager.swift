@@ -29,8 +29,13 @@ class PictureManager {
     
     // MARK: - Functions
     
+    
     func delegateNetworkManager() {
         networkService.delegate = self
+        networkService.fetchPhotos()
+    }
+    
+    func fetchPhotos() {
         networkService.fetchPhotos()
     }
     
