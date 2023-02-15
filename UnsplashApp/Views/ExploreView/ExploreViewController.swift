@@ -11,7 +11,6 @@ class ExploreViewController: UICollectionViewController {
         
 	var keyWord = String()
     var picsList: [PictureModel.PictureItem] = []
-    var someVar = 123
     
     //test
     var picsManager: PictureManager?
@@ -59,6 +58,9 @@ class ExploreViewController: UICollectionViewController {
     @objc func refreshPhotos(_ sender: Any) {
         // Fetch Weather Data
         //networkService.fetchPhotos()
+        picsManager!.fetchPhotos()
+        collectionView.reloadData()
+        
     }
     
     private func setupCollectionView() {
@@ -158,7 +160,7 @@ extension ExploreViewController: PictureManagerDelegate {
         DispatchQueue.main.async {
             self.picsList = getArray
             self.collectionView.reloadData()
-            
+            self.refreshControl.endRefreshing()
         }
     }
     func didFailWithError(_ error: Error) {
