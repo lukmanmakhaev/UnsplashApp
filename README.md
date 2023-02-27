@@ -20,7 +20,3 @@
 - ViewController life cycle
 
 ---
-
-![IMG_3352](https://user-images.githubusercontent.com/96999908/221598925-3825132b-1190-4ccd-8419-d20f947d6097.PNG)
-![IMG_3350](https://user-images.githubusercontent.com/96999908/221598935-76b08fb6-26ea-47cb-94ed-a3a737475d15.PNG)
-![IMG_3349](https://user-images.githubusercontent.com/96999908/221598957-1810f516-7258-4c67-94ce-ea516bc91a5e.PNG)
